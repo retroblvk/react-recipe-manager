@@ -1,0 +1,96 @@
+@import './variables.scss';
+/* 
+  =================================
+  Navbar
+  =================================
+*/
+header {
+  background: $bg;
+  border-bottom: 1px solid $primary-color;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navbar-brand a {
+  color: $primary-color;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.menu-icon span {
+  background: $primary-color;
+  height: 0.2rem;
+  width: 33px;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.menu-icon span:last-of-type {
+  margin-bottom: 0;
+}
+
+.navbar-nav {
+  background: $secondary-color;
+  max-height: 0;
+  overflow: hidden;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 7.1rem;
+  transition: all 0.5s;
+}
+
+.navbar-nav li {
+  width: 80%;
+  padding: 2.4rem;
+}
+
+.navbar-nav a {
+  color: #fff;
+  font-weight: 900;
+}
+
+.open-nav {
+  max-height: 800px;
+  height: 32rem;
+}
+
+.content {
+  margin-top: 8rem;
+}
+
+@media screen and (min-width: 800px) {
+  .menu-icon {
+    display: none;
+  }
+  .navbar-nav {
+    background: none;
+    display: flex;
+    flex-direction: row;
+    position: static;
+    width: initial;
+    max-height: initial;
+    height: initial;
+    overflow: initial;
+  }
+  .navbar-nav li {
+    width: initial;
+    padding: initial;
+    margin-right: 2.4rem;
+  }
+  .navbar-nav li:last-of-type {
+    margin-right: 0;
+  }
+  .navbar-nav a {
+    color: $secondary-color;
+  }
+}

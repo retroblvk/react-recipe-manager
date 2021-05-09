@@ -1,7 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// Pages
 import Index from './containers/index';
-import Upload from './containers/upload';
+import UploadRecipe from './containers/upload-recipe';
+import Register from './containers/register';
+import Login from './containers/login';
+// styles
+import './assets/scss/main.scss';
+// packages
 import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
@@ -17,7 +23,9 @@ ReactDOM.render(
         {/* your usual react-router v4/v5 routing */}
         <Switch>
           <Route exact path='/' component={Index} />
-          <Route exact path='/upload' component={Upload} />
+          <Route exact path='/upload-recipe' component={UploadRecipe} />
+          <Route exact path='/register' component={Register} />
+          <Route exact path='/login' component={Login} />
         </Switch>
       </>
     </ConnectedRouter>

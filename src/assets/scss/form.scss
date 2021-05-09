@@ -1,0 +1,55 @@
+.upload-form {
+  width: 80%;
+  margin: 0 auto;
+
+  div {
+    margin: 2.4rem 0;
+  }
+  @media screen and (min-width: 760px) {
+    width: 70%;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 45%;
+  }
+}
+
+.login-form {
+  @media screen and (min-width: 760px) {
+    width: 35%;
+    margin: 0 auto;
+  }
+  @media screen and (min-width: 1060px) {
+    width: 30%;
+    margin: 0 auto;
+  }
+}
+
+input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.8rem 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  height: 12rem;
+  padding: 0.8rem 0.8rem;
+}
+
+.error {
+  color: red;
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+}
+
+.btn {
+  padding: 0.8rem 1.2rem;
+  margin-left: auto;
+  display: block;
+}

@@ -1,0 +1,46 @@
+import { connect } from 'react-redux';
+import { Component } from 'react';
+import Layout from './../components/layout';
+
+const mapStateToProps = (state) => {
+  return {
+    userFields: state.userFields,
+    requestUser: state.requestUser,
+  };
+};
+
+// dispatch the DOM changes to call an action. note mapStateToProps returns object, mapDispatchToProps returns function
+// the function returns an object then uses connect to change the data from reducers.
+
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
+class Login extends Component {
+  componentDidMount() {
+    document.title = 'Yum | Login';
+  }
+  handleSubmit = (e) => {
+    e.preventDefault();
+  };
+  render() {
+    return (
+      <Layout>
+        <form action='' className='login-form' onSubmit={this.handleSubmit}>
+          <h1>Login</h1>
+          <div>
+            <label htmlFor=''>Email</label>
+            <input type='text' />
+          </div>
+          <div>
+            <label htmlFor=''>Password</label>
+            <input type='text' />
+          </div>
+          <button class='btn'>Login</button>
+        </form>
+      </Layout>
+    );
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

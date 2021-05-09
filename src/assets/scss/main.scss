@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+@import './reset.scss';
+@import './navbar.scss';
+@import './form.scss';
+
+html,
+body {
+  font-size: 62.5%;
+  font-family: lato, sans-serif;
+  color: $secondary-color;
+}
+
+h1 {
+  font-size: 3.8rem;
+  font-weight: 600;
+  margin-bottom: 2.4rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 2.4rem;
+}
+
+a {
+  font-size: 1.6rem;
+  text-decoration: none;
+}
+
+p {
+  font-size: 1.6rem;
+  max-width: 62.4rem;
+  line-height: 2.4rem;
+  margin-bottom: 2.4rem;
+}
+
+label {
+  font-size: 1.6rem;
+  display: block;
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+
+.container {
+  width: 90%;
+  margin: 2.4rem auto;
+}
+
+.content {
+  margin-top: 9.6rem;
+}
+
+.card-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 3.6rem;
+  grid-gap: 4rem;
+  @media screen and (min-width: 650px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media screen and (min-width: 950px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.card {
+  width: 100%;
+  box-sizing: border-box;
+  background: #eee;
+  margin-bottom: 2.4rem;
+  border-radius: 0.4rem;
+  border-top-left-radius: 1.2rem;
+  border-top-right-radius: 1.2rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.card img {
+  height: 26rem;
+  width: 100%;
+}
+
+.card-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+  font-weight: 900;
+}
+
+.card-tags li {
+  background: $secondary-color;
+  padding: 0.4rem 0.8rem;
+  color: #fff;
+  border-radius: 0.3rem;
+  margin-right: 1.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.card-body,
+.card-footer {
+  padding: 1.2rem;
+}
