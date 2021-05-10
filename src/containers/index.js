@@ -30,25 +30,15 @@ class Index extends Component {
     const recipes = this.props.requestRecipe.recipe;
     return (
       <Layout>
-        <h1>Top Recipes</h1>
+        <h1>Caribbean Recipes</h1>
         <div className='card-list'>
-          {/* {Object.keys(recipes).length > 0
-            ? recipes.map((recipe) => {
-                return (
-                  <Card
-                    title={recipe.title}
-                    tags={recipe.tags}
-                    imgURL={recipe.imgURL}
-                    description={recipe.description}
-                    _id={recipe._id}
-                  />
-                );
-              })
-            : ''} */}
           {this.props.requestRecipe.isPending === false
             ? Object.keys(recipes).length > 0
-              ? recipes.map((recipe) => {
-                  return (
+              ? recipes
+                  .filter((recipe) =>
+                    recipe.tags.join(' ').toLowerCase().includes('caribbean')
+                  )
+                  .map((recipe) => (
                     <Card
                       title={recipe.title}
                       tags={recipe.tags}
@@ -56,8 +46,47 @@ class Index extends Component {
                       description={recipe.description}
                       _id={recipe._id}
                     />
-                  );
-                })
+                  ))
+              : ''
+            : ''}
+        </div>
+        <h1>Burger Recipes</h1>
+        <div className='card-list'>
+          {this.props.requestRecipe.isPending === false
+            ? Object.keys(recipes).length > 0
+              ? recipes
+                  .filter((recipe) =>
+                    recipe.tags.join(' ').toLowerCase().includes('burger')
+                  )
+                  .map((recipe) => (
+                    <Card
+                      title={recipe.title}
+                      tags={recipe.tags}
+                      imgURL={recipe.imgURL}
+                      description={recipe.description}
+                      _id={recipe._id}
+                    />
+                  ))
+              : ''
+            : ''}
+        </div>
+        <h1>Drink Recipes</h1>
+        <div className='card-list'>
+          {this.props.requestRecipe.isPending === false
+            ? Object.keys(recipes).length > 0
+              ? recipes
+                  .filter((recipe) =>
+                    recipe.tags.join(' ').toLowerCase().includes('drinks')
+                  )
+                  .map((recipe) => (
+                    <Card
+                      title={recipe.title}
+                      tags={recipe.tags}
+                      imgURL={recipe.imgURL}
+                      description={recipe.description}
+                      _id={recipe._id}
+                    />
+                  ))
               : ''
             : ''}
         </div>

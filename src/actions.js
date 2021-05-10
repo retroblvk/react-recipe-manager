@@ -86,6 +86,49 @@ export const setConfirmPasswordField = (text) => ({
   payload: text,
 });
 
+export const loginUser = (state) => (dispatch) => {
+  dispatch({ type: REQUEST_USER_PENDING });
+  const user = (({ emailField, passwordField }) => ({
+    emailField,
+    passwordField,
+  }))(state);
+  console.log(user.emailField, user.passwordField);
+  let emptyField = false;
+  const emptyFields = {
+    message: 'Please make sure to fill out all the fields.',
+    emailField: false,
+    passwordField: false,
+  };
+  // Loop through recipes to see if theirs an empty field.
+  for (const property in user) {
+    if (user[property].length === 0) {
+      emptyFields[property] = !emptyFields[property];
+      emptyField = true;
+    }
+  }
+  if (emptyField) {
+    const err = emptyFields;
+    dispatch({ type: REQUEST_USER_FAILED, payload: err });
+  } else {
+    const data = new FormData();
+    data.append('user', JSON.stringify(user));
+    Axios.post('http://localhost:3001/user/login', data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+      .then((response) => {
+        dispatch({
+          type: REQUEST_USER_SUCCESS,
+          payload: response.data.user,
+        });
+      })
+      .catch((err) => {
+        dispatch({ type: REQUEST_USER_FAILED, payload: err });
+      });
+  }
+};
+
 export const postUser = (state) => (dispatch) => {
   dispatch({ type: REQUEST_USER_PENDING });
   const user = (({ emailField, passwordField, confirmPasswordField }) => ({
@@ -113,16 +156,24 @@ export const postUser = (state) => (dispatch) => {
   } else {
     const data = new FormData();
     data.append('user', JSON.stringify(user));
-    Axios.post('http://localhost:3001/user', data, {
+    Axios.post('http://localhost:3001/user/register', data, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     })
       .then((response) => {
-        dispatch({
-          type: REQUEST_USER_SUCCESS,
-          payload: JSON.parse(response.data.user),
-        });
+        console.log('response', response);
+        if (response.data.err.code === 11000) {
+          dispatch({
+            type: REQUEST_USER_FAILED,
+            payload: response.data.err,
+          });
+        } else {
+          dispatch({
+            type: REQUEST_USER_SUCCESS,
+            payload: response.data.user,
+          });
+        }
       })
       .catch((err) => {
         dispatch({ type: REQUEST_USER_FAILED, payload: err });
@@ -193,6 +244,7 @@ export const postRecipe = (state) => (dispatch) => {
       },
     })
       .then((response) => {
+        console.log(response);
         dispatch({ type: REQUEST_RECIPE_SUCCESS, payload: response.data });
       })
       .catch((err) => {

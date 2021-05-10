@@ -13,6 +13,7 @@ const Card = ({ title, tags, imgURL, description, _id }) => (
             if (index < 4) {
               return <li>{tag}</li>;
             }
+            return '';
           }
         })}
       </ul>

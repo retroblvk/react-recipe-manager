@@ -29,6 +29,7 @@ input {
   box-sizing: border-box;
   padding: 0.8rem 0.8rem;
   margin-bottom: 1.2rem;
+  font-size: 1.6rem;
 }
 
 input::placeholder {
@@ -40,6 +41,7 @@ textarea {
   box-sizing: border-box;
   height: 12rem;
   padding: 0.8rem 0.8rem;
+  font-size: 1.6rem;
 }
 
 .error {
